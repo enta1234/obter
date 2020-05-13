@@ -25,7 +25,6 @@ describe('merge function', () => {
     }
 
     obter.merge(targer, source)
-    console.log('targer: ', targer)
     for (const obj in targer) {
       expect(targer[obj]).not.toBeUndefined()
     }
@@ -47,7 +46,6 @@ describe('clear function', () => {
       }
     }
     obter.clear(testObj)
-    console.log('testObj: ', testObj)
     for (const obj in testObj) {
       expect(testObj[obj]).not.toBeUndefined()
     }

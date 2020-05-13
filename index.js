@@ -22,8 +22,8 @@ function clear (source = {}) {
   }
 
   for (const prop in source) {
-    if (prop instanceof Object) {
-      _clearDeepObject(prop)
+    if (source[prop] instanceof Object) {
+      _clearDeepObject(source[prop])
     } else if (typeof source[prop] === 'undefined') {
       delete source[prop]
     }
@@ -47,8 +47,8 @@ function _mergeDeepObject (t, s) {
 
 function _clearDeepObject (s) {
   for (const prop in s) {
-    if (prop instanceof Object) {
-      _clearDeepObject(prop)
+    if (s[prop] instanceof Object) {
+      _clearDeepObject(s[prop])
     } else if (typeof s[prop] === 'undefined') {
       delete s[prop]
     }
