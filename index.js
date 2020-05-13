@@ -6,7 +6,9 @@ function merge (target, source) {
   }
 
   for (const [key, value] of Object.entries(source)) {
-    if (typeof value !== 'undefined') {
+    if (value instanceof Object) {
+      _mergeDeepObject(target[key] = {}, value)
+    } else if (typeof value !== 'undefined') {
       target[key] = value
     }
   }
@@ -31,4 +33,14 @@ function clear (source = {}) {
 module.exports = {
   merge,
   clear
+}
+
+function _mergeDeepObject (t, s) {
+  for (const [key, value] of Object.entries(s)) {
+    if (typeof value === 'object') {
+      _mergeDeepObject(t[key] = {}, value)
+    } else if (typeof value !== 'undefined') {
+      t[key] = value
+    }
+  }
 }

@@ -1,7 +1,7 @@
 const obter = require('../index')
 
 describe('merge function', () => {
-  test('clear data low level', () => {
+  test('clear data', () => {
     const targer = {
       a: 'A'
     }
@@ -11,10 +11,21 @@ describe('merge function', () => {
       b: undefined,
       c: 123,
       d: undefined,
-      e: null
+      e: null,
+      f: {
+        a: 'a',
+        b: undefined,
+        c: {
+          a: 1,
+          b: {
+            a: 'a'
+          }
+        }
+      }
     }
 
     obter.merge(targer, source)
+    console.log('targer: ', targer)
     for (const obj in targer) {
       expect(targer[obj]).not.toBeUndefined()
     }
@@ -32,13 +43,4 @@ describe('clear function', () => {
       expect(testObj[obj]).not.toBeUndefined()
     }
   })
-
-  // test('freeze object', () => {
-  //   const testObj = Object.freeze({
-  //     a: 'A',
-  //     b: undefined
-  //   })
-
-  //   expect(obter.clear(testObj)).toThrow(TypeError)
-  // })
 })
