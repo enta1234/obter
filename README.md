@@ -1,5 +1,5 @@
 # used
-all function do not support deep object.
+all function do support deep object.
 
 ### merge data
 
@@ -34,3 +34,9 @@ all function do not support deep object.
   obter.clear(testObj)
     // a {a: 'A'}
 ```
+
+### changelog
+
+ * 1.2.0 - support deep object
+ * 1.0.1 - added README.md
+ * 1.0.0 - init

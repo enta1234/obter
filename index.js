@@ -14,10 +14,6 @@ function merge (target, source) {
   }
 }
 
-/**
- * @description Do not support deep object.
- * @param {Object} source object for clear undefined.
- */
 function clear (source = {}) {
   if (typeof source !== 'object') {
     throw new TypeError('target and source should be object.')
@@ -26,7 +22,11 @@ function clear (source = {}) {
   }
 
   for (const prop in source) {
-    if (typeof source[prop] === 'undefined') delete source[prop]
+    if (prop instanceof Object) {
+      _clearDeepObject(prop)
+    } else if (typeof source[prop] === 'undefined') {
+      delete source[prop]
+    }
   }
 }
 
@@ -41,6 +41,16 @@ function _mergeDeepObject (t, s) {
       _mergeDeepObject(t[key] = {}, value)
     } else if (typeof value !== 'undefined') {
       t[key] = value
+    }
+  }
+}
+
+function _clearDeepObject (s) {
+  for (const prop in s) {
+    if (prop instanceof Object) {
+      _clearDeepObject(prop)
+    } else if (typeof s[prop] === 'undefined') {
+      delete s[prop]
     }
   }
 }

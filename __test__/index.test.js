@@ -36,9 +36,18 @@ describe('clear function', () => {
   test('clear data low level', () => {
     const testObj = {
       a: 'A',
-      b: undefined
+      b: undefined,
+      c: {
+        a: 'a',
+        b: undefined,
+        c: {
+          a: 123,
+          b: undefined
+        }
+      }
     }
     obter.clear(testObj)
+    console.log('testObj: ', testObj)
     for (const obj in testObj) {
       expect(testObj[obj]).not.toBeUndefined()
     }
