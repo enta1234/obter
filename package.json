@@ -1,0 +1,35 @@
+{
+  "name": "obter",
+  "version": "1.0.0",
+  "description": "This tool is used for map property into object and don't add undefined value.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "standard": {
+    "global": [
+      "test",
+      "expect",
+      "describe"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/enta1234/obter.git"
+  },
+  "keywords": [
+    "mapper",
+    "object",
+    "mappper"
+  ],
+  "author": "ucode",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/enta1234/obter/issues"
+  },
+  "homepage": "https://github.com/enta1234/obter#readme",
+  "devDependencies": {
+    "jest": "25.0.x",
+    "standard": "^14.3.4"
+  }
+}
