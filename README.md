@@ -29,14 +29,24 @@ all function do support deep object.
 
   const testObj = {
       a: 'A',
-      b: undefined
+      b: undefined,
+      c: {
+        a: 1,
+        b: {
+          a: {},
+          b: true'
+        },
+        c: {}
+      },
+      d: {}
   }
-  obter.clear(testObj)
-    // a {a: 'A'}
+  const rObter = obter.clear(testObj)
+  // rObter = {a: 'A', c: {a: 1, b: { b: true }}}
 ```
 
 ### changelog
 
+ * 1.2.2 - support nested empty object
  * 1.2.0 - support deep object
  * 1.0.1 - added README.md
  * 1.0.0 - init

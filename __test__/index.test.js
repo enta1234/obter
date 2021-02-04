@@ -18,8 +18,10 @@ describe('merge function', () => {
         c: {
           a: 1,
           b: {
-            a: 'a'
-          }
+            a: 'a',
+            b: {}
+          },
+          c: {}
         }
       }
     }
@@ -41,13 +43,17 @@ describe('clear function', () => {
         b: undefined,
         c: {
           a: 123,
-          b: undefined
-        }
+          b: undefined,
+          c: {}
+        },
+        d: {}
       }
     }
-    obter.clear(testObj)
-    for (const obj in testObj) {
+    const rObter = obter.clear(testObj)
+    console.log('rObter: ', rObter)
+    for (const obj in rObter) {
       expect(testObj[obj]).not.toBeUndefined()
+      // expect(testObj[obj]).toMatchObject({})
     }
   })
 })
