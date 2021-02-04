@@ -14,20 +14,33 @@ function merge (target, source) {
   }
 }
 
+/**
+ * Clear undefined object support nested.
+ * @param {object} source - The Source of object to clear
+ * @returns {object} a new object of source
+ */
 function clear (source = {}) {
   if (typeof source !== 'object') {
     throw new TypeError('target and source should be object.')
-  } else if (Object.isFrozen(source) && Object.isSealed(source)) {
-    throw new TypeError('target and source should be not frozen or sealed.')
+  } else {
+    source = JSON.parse(JSON.stringify(source))
+    source = clearEmpties(source)
   }
+  return source
+}
 
-  for (const prop in source) {
-    if (source[prop] instanceof Object) {
-      _clearDeepObject(source[prop])
-    } else if (typeof source[prop] === 'undefined') {
-      delete source[prop]
+function clearEmpties (oo) {
+  const o = JSON.parse(JSON.stringify(oo))
+  for (var k in o) {
+    if (!o[k] || typeof o[k] !== 'object') {
+      continue
+    }
+    clearEmpties(o[k])
+    if (Object.keys(o[k]).length === 0) {
+      delete o[k]
     }
   }
+  return o
 }
 
 module.exports = {
@@ -45,12 +58,12 @@ function _mergeDeepObject (t, s) {
   }
 }
 
-function _clearDeepObject (s) {
-  for (const prop in s) {
-    if (s[prop] instanceof Object) {
-      _clearDeepObject(s[prop])
-    } else if (typeof s[prop] === 'undefined') {
-      delete s[prop]
-    }
-  }
-}
+// function _clearDeepObject (s) {
+//   for (const prop in s) {
+//     if (s[prop] instanceof Object) {
+//       _clearDeepObject(s[prop])
+//     } else if (typeof s[prop] === 'undefined') {
+//       delete s[prop]
+//     }
+//   }
+// }

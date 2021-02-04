@@ -1,6 +1,6 @@
 {
   "name": "obter",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "This tool is used for map property into object and don't add undefined value.",
   "main": "index.js",
   "scripts": {
