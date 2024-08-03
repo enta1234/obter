@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/enta1234/obter#readme",
   "devDependencies": {
-    "jest": "25.0.x",
+    "jest": "29.7.x",
     "standard": "^14.3.4"
   }
 }
